@@ -1,0 +1,3 @@
+/home/dsidorin/Documents/learning/coursera/art_of_development_on_modern_cpp/white_belt/WhiteBeltFinal/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/dsidorin/Documents/learning/coursera/art_of_development_on_modern_cpp/white_belt/WhiteBeltFinal/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/dsidorin/Documents/learning/coursera/art_of_development_on_modern_cpp/white_belt/WhiteBeltFinal/cmake-build-debug/CMakeFiles/WhiteBeltFinal.dir
