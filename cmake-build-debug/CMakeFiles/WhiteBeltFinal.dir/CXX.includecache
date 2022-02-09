@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dsidorin/Documents/learning/coursera/art_of_development_on_modern_cpp/white_belt/WhiteBeltFinal/main.cpp
+iostream
+-
+string
+-
+set
+-
+fstream
+-
+iomanip
+-
+exception
+-
+stdexcept
+-
+map
+-
+sstream
+-
+
