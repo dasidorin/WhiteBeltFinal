@@ -54,6 +54,7 @@ struct Day {
 
 class Date {
 public:
+
     Date() {
         year = Year(0);
         month = Month(1);
@@ -104,42 +105,39 @@ istream& operator >> (istream& stream, Date& date) {
     stringstream current_stream(current_date);
 
     if (!(current_stream >> year)) {
-        throw runtime_error("Wrong date format: " + current_date);
+        throw invalid_argument("Wrong date format: " + current_date);
     }
 
     if (current_stream.peek() == '-') {
         current_stream.ignore(1);
     } else {
-        throw runtime_error("Wrong date format: " + current_date);
+        throw invalid_argument("Wrong date format: " + current_date);
     }
 
     if (!(current_stream >> month)) {
-        throw runtime_error("Wrong date format: " + current_date);
+        throw invalid_argument("Wrong date format: " + current_date);
     }
 
     if (current_stream.peek() == '-') {
         current_stream.ignore(1);
     } else {
-        throw runtime_error("Wrong date format: " + current_date);
+        throw invalid_argument("Wrong date format: " + current_date);
     }
 
     if (!(current_stream >> day)) {
-        throw runtime_error("Wrong date format: " + current_date);
+        throw invalid_argument("Wrong date format: " + current_date);
     }
 
     if (!(current_stream.peek() == EOF)) {
-        throw runtime_error("Wrong date format: " + current_date);
+        throw invalid_argument("Wrong date format: " + current_date);
     }
 
-    try {
-        Year new_year(year);
-        Month new_month(month);
-        Day new_day(day);
-        Date new_date(new_year, new_month, new_day);
-        date = new_date;
-    } catch (invalid_argument& i) {
-        cout << i.what() << endl;
-    }
+    Year new_year(year);
+    Month new_month(month);
+    Day new_day(day);
+    Date new_date(new_year, new_month, new_day);
+    date = new_date;
+
     return stream;
 }
 
@@ -243,10 +241,10 @@ int main() {
                   stream >> date;
                   stream >> event;
                   db.AddEvent(date, event);
-              } catch (runtime_error& ee) {
+              } catch (invalid_argument& ee) {
                   cout << ee.what() << endl;
+                  return 1;
               }
-
           } else if (command == "Del") {
               try {
                   stream >> date;
@@ -259,20 +257,23 @@ int main() {
                   } else {
                       db.DeleteDate(date);
                   }
-              } catch (runtime_error& ee) {
+              } catch (invalid_argument& ee) {
                   cout << ee.what() << endl;
+                  return 2;
               }
           } else if (command == "Find") {
               try {
                   stream >> date;
                   db.Find(date);
-              } catch (runtime_error& ee) {
+              } catch (invalid_argument& ee) {
                   cout << ee.what() << endl;
+                  return 3;
               }
           } else if (command == "Print") {
               db.Print();
           } else {
               cout << "Unknown command: " << command << endl;
+              return 4;
           }
       }
   }
